@@ -108,7 +108,7 @@ if save:
     ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 
     # It's very important to transform the matrix to list.
-    data = {'camera_matrix': np.asarray(mtx).tolist(), 'dist_coeff': np.asarray(dist).tolist(), 'rvecs': np.asarray(rvecs).tolist(), 'tvecs': np.asarray(tvecs).tolist}
+    data = {'camera_matrix': np.asarray(mtx).tolist(), 'dist_coeff': np.asarray(dist).tolist()}
 
     with open("calibration.yaml", "w") as f:
         yaml.dump(data, f)
