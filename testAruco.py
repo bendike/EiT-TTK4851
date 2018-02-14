@@ -2,8 +2,8 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture(0)
-dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_1000)
-#dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
+#dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_1000)
+dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
 #dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_ARUCO_ORIGINAL)
 
 while(True):
