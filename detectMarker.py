@@ -34,6 +34,34 @@ while True:
     cv2.imshow('webcam', gray, )
     char = cv2.waitKey(25)
 
+    #Write coordinate to file when pressing space
+    if char == 32:
+
+        if len(corners) != 3:
+            print("Try again, there should be exactly 3 markers in the picture")
+            continue
+
+        coordinates = np.asarray([corners[i][0][0] for i in range(len(corners))]).tolist()
+        sums = [float(coord[0])+float(coord[1]) for coord in coordinates]
+        used = np.ones(len(corners))
+
+        used[np.argmin(sums)] = 0
+        yCoord = coordinates[np.argmin(sums)]
+        used[np.argmax(sums)] = 0 
+        xCoord = coordinates[np.argmax(sums)]
+        origo = coordinates[np.argmax(used)]
+
+        print('yCoord: ',yCoord)
+        print('xCoord: ',xCoord)
+        print('origo: ' , origo)
+
+
+        data = {'origo': origo, 'xCoord': xCoord, 'yCoord': yCoord}
+
+        with open("coordinates.yaml", "w") as f:
+            yaml.dump(data, f)
+
+
     # return on esc-press
     if char == 27:
         print("Exiting")
