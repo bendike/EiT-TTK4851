@@ -1,3 +1,4 @@
 # Ignore this
 calibration.yaml
 *.png
+*.DS_Store
