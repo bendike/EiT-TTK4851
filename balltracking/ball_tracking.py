@@ -18,12 +18,11 @@ args = vars(ap.parse_args())
 # list of tracked points
 colorLower = (37, 100, 30)
 colorUpper = (95, 255, 255)
-pts = deque(maxlen=args["buffer"])
 
 # if a video path was not supplied, grab the reference
 # to the webcam
 if not args.get("video", False):
-	camera = cv2.VideoCapture(1)
+	camera = cv2.VideoCapture(0)
 
 # otherwise, grab a reference to the video file
 else:
@@ -77,19 +76,7 @@ while True:
             
     # update the points queue
     print(center)
-    pts.appendleft(center)
 
-    # loop over the set of tracked points
-    for i in range(1, len(pts)):
-        # if either of the tracked points are None, ignore
-        # them
-        if pts[i - 1] is None or pts[i] is None:
-            continue
-
-        # otherwise, compute the thickness of the line and
-        # draw the connecting lines
-        thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
-        cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
 
     # show the frame to our screen
     cv2.imshow("Frame", frame)
