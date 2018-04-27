@@ -10,7 +10,7 @@ dist = loadeddict.get('dist_coeff')
 camera_matrix = np.asarray(mtx)
 dist_coeff = np.asarray(dist)
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
 
 print("Press ESC to exit")
