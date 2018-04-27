@@ -1,5 +1,4 @@
-Taken from https://github.com/robotics/open_abb 
-All credits to them.
+Taken from https://github.com/robotics/open_abb. All credits to them.
 
 
 # open-abb-driver
